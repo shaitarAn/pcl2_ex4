@@ -9,6 +9,7 @@ from typing import BinaryIO
 from urllib.request import urlopen
 # import xml.etree.ElementTree as ET
 import lxml.etree as ET
+import time
 
 # here I go monkeypatching AGAIN
 # https://stackoverflow.com/questions/27835619/urllib-and-ssl-certificate-verify-failed-error
@@ -77,12 +78,18 @@ def sample(iterable, k):
 
 
 def main():
+    start = time.time()
     stream = urlopen('https://files.ifi.uzh.ch/cl/pcl/pcl2/abstracts.xml.gz')
     # stream = Path('Korpusdaten/abstracts.xml.gz')
     # stream = format('25642278.xml.gz')
     outfile_dir = format('Korpusdaten')
     with gzip.open(stream) as inp:
         split_corpus(inp, outfile_dir)
+
+    end = time.time()
+    hours, rem = divmod(end-start, 3600)
+    minutes, seconds = divmod(rem, 60)
+    print("This programm took {:0>2}:{:0>2}:{:05.2f} to run.".format(int(hours),int(minutes),seconds))
 
 if __name__ == '__main__':
     main()
