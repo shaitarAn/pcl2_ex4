@@ -35,7 +35,7 @@ def longest_substrings(x: str, y: str) -> Iterable[str]:
         for j in range(1, m+1):
             # only consider same letters in strings
             if x[i-1] == y[j-1]:
-                d[i][j] = max(d[i-1][j-1] + (1 if x[i-1] == y[j-1]  else 0), 1)
+                d[i][j] = d[i-1][j-1] + 1
                 # save max value
                 if d[i][j] > maxim:
                     maxim = d[i][j]
@@ -44,7 +44,7 @@ def longest_substrings(x: str, y: str) -> Iterable[str]:
 
     # print the  matrix
     # for a in d:
-        # print(a)
+    #     print(a)
 
     # initialize list of end points
     offsets = []
@@ -55,22 +55,16 @@ def longest_substrings(x: str, y: str) -> Iterable[str]:
             if value == maxim:
                 offsets.append(ind)
 
-    # initialize list of common substrings
-    subs = []
+    # if no common substrings found
+    if maxim == 0:
+        print(None)
+    else:
+        # iterate over string and print common substrings
+        print([y[o-maxim:o] for o in offsets])
 
-    # iterate over string and store common substrings
-    for o in offsets:
-        # if no common substrings found
-        if maxim == 0:
-            subs = None
-        else:
-            substring = y[o-maxim:o]
-            subs.append(substring)
-
-    print(subs)
-
-longest_substrings('mozart', 'mozzarella')
-longest_substrings('Haus', 'Maus')
-longest_substrings('Kleistermasse', 'Meisterklasse')
-longest_substrings('keep the interface!', 'KeEp ThE iNtErFaCe!')
-longest_substrings('Tod', 'Leben')
+if __name__ == '__main__':
+    longest_substrings('mozart', 'mozzarella')
+    longest_substrings('Haus', 'Maus')
+    longest_substrings('Kleistermasse', 'Meisterklasse')
+    longest_substrings('keep the interface!', 'KeEp ThE iNtErFaCe!')
+    longest_substrings('Tod', 'Leben')
