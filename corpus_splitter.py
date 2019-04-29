@@ -2,7 +2,7 @@
 #-*- coding: utf-8 -*-
 
 # PCL II, FS 19
-# Uebung 3 Aufgabe 1
+# Uebung 4 Aufgabe 1.2
 # Author: Anastassia Shaitarova, Varvara Stein
 # Matrikelnr.: 17705062  , 18743500
 
