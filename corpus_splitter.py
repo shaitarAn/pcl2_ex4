@@ -90,11 +90,11 @@ def sample(iterable, k):
 
 def main():
     start = time.time()
-    # stream = urlopen('https://files.ifi.uzh.ch/cl/pcl/pcl2/abstracts.xml.gz')
+    stream = urlopen('https://files.ifi.uzh.ch/cl/pcl/pcl2/abstracts.xml.gz')
     # to run from local file:
     # stream = Path('Korpusdaten/abstracts.xml.gz')
-    # using a sample:
-    stream = format('25642278.xml.gz')
+    # to use a sample:
+    # stream = format('25642278.xml.gz')
     outfile_dir = format('Korpusdaten')
     with gzip.open(stream) as inp:
         split_corpus(inp, outfile_dir)
