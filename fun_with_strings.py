@@ -2,11 +2,12 @@
 #-*- coding: utf-8 -*-
 
 # PCL II, FS 19
-# Uebung 3 Aufgabe 1
+# Uebung 4 Aufgabe 2
 # Author: Anastassia Shaitarova, Varvara Stein
 # Matrikelnr.: 17705062  , 18743500
 
 from typing import Iterable
+import sys
 
 def longest_substrings(x: str, y: str) -> Iterable[str]:
     '''
@@ -54,12 +55,18 @@ def longest_substrings(x: str, y: str) -> Iterable[str]:
     if maxim == 0:
         print(None)
     else:
-        # iterate over traget string and print common substrings
+        # iterate over target string and print common substrings
         print([y[o-maxim:o] for o in offsets])
 
+def main():
+    string1 = sys.argv[1]
+    string2 = sys.argv[2]
+    # longest_substrings('mozart', 'mozzarella')
+    # longest_substrings('Haus', 'Maus')
+    # longest_substrings('Kleistermasse', 'Meisterklasse')
+    # longest_substrings('keep the interface!', 'KeEp ThE iNtErFaCe!')
+    # longest_substrings('Tod', 'Leben')
+    longest_substrings(string1, string2)
+
 if __name__ == '__main__':
-    longest_substrings('mozart', 'mozzarella')
-    longest_substrings('Haus', 'Maus')
-    longest_substrings('Kleistermasse', 'Meisterklasse')
-    longest_substrings('keep the interface!', 'KeEp ThE iNtErFaCe!')
-    longest_substrings('Tod', 'Leben')
+    main()
