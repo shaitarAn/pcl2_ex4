@@ -2,7 +2,7 @@
 #-*- coding: utf-8 -*-
 
 # PCL II, FS 19
-# Uebung 3 Aufgabe 1
+# Uebung 4 Aufgabe 2
 # Author: Anastassia Shaitarova, Varvara Stein
 # Matrikelnr.: 17705062  , 18743500
 
@@ -55,7 +55,7 @@ def longest_substrings(x: str, y: str) -> Iterable[str]:
     if maxim == 0:
         print(None)
     else:
-        # iterate over traget string and print common substrings
+        # iterate over target string and print common substrings
         print([y[o-maxim:o] for o in offsets])
 
 def main():
