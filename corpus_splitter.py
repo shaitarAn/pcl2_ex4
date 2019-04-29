@@ -49,12 +49,16 @@ def split_corpus(infile: BinaryIO, targetdir: str,
     Splits large binary file into train, dev, and test sets.
     Writes sets to zipped files.
     '''
-    dev = Path(format(targetdir+'/abstracts.txt.development.gz'))
-    test = Path(format(targetdir+'/abstracts.txt.test.gz'))
-    train = Path(format(targetdir+'/abstracts.txt.training.gz'))
+    # create directory for outfiles
+    outdir = Path(targetdir)
+    outdir.mkdir(parents=True, exist_ok=True)
+    # set paths for outfiles
+    dev = Path(format(outdir/'abstracts.txt.development.gz'))
+    test = Path(format(outdir/'abstracts.txt.test.gz'))
+    train = Path(format(outdir/'abstracts.txt.training.gz'))
 
     abstracts = iterate_thru_corpus(infile)
-    
+
     # create random sample of 1000 abstracts for devset
     devs = sample(abstracts, n)
     # create random sample of 1000 abstracts for testset
@@ -98,8 +102,8 @@ def main():
     # to run from local file:
     # stream = Path('Korpusdaten/abstracts.xml.gz')
     # to use a sample:
-    # stream = format('25642278.xml.gz')
-    outfile_dir = format('Korpusdaten')
+    # stream = format('Korpusdaten/25642278.xml.gz')
+    outfile_dir = format('abstracts')
     with gzip.open(stream) as inp:
         split_corpus(inp, outfile_dir)
 
