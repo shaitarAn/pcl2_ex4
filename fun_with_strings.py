@@ -4,7 +4,7 @@
 # PCL II, FS 19
 # Uebung 4 Aufgabe 2
 # Author: Anastassia Shaitarova, Varvara Stein
-# Matrikelnr.: 17705062  , 18743500
+# Matrikelnr.: XXX  , YYY
 
 from typing import Iterable
 import sys
